@@ -1,4 +1,4 @@
-import 'dart:math';
+/*import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -97,3 +97,4 @@ class _CustomCircularProgress extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
+*/

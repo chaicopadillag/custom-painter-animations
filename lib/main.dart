@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:custom_painter/screens/graficas_circulares.dart';
+import 'package:custom_painter/screens/slideshow_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Design',
-      home: GraficasCirculares(),
+      home: SlideShowPage(),
     );
   }
 }
