@@ -302,3 +302,75 @@ class _HeaderWaveGradientPainter extends CustomPainter {
     return true;
   }
 }
+
+//* Emergency Header
+
+class EmergencyHeader extends StatelessWidget {
+  const EmergencyHeader({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(children: [
+      const _BgHeaderEmercency(),
+      Positioned(
+        child: Icon(
+          Icons.add_rounded,
+          color: Colors.white.withOpacity(0.2),
+          size: 250,
+        ),
+        left: -90,
+        top: -80,
+      ),
+      Column(
+        children: const [
+          SizedBox(height: 80, width: double.infinity),
+          Text(
+            'Emergencia Medica',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 20),
+          Text(
+            'Solicita al 911',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 20),
+          Icon(
+            Icons.add_rounded,
+            size: 100,
+            color: Colors.white,
+          )
+        ],
+      )
+    ]);
+  }
+}
+
+class _BgHeaderEmercency extends StatelessWidget {
+  const _BgHeaderEmercency({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 300,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Color(0xff526bf6), Color(0xff67acf2)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80)),
+      ),
+    );
+  }
+}
