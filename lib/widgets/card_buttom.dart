@@ -1,17 +1,68 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 class CardButtom extends StatelessWidget {
-  const CardButtom({Key? key}) : super(key: key);
+  final IconData icon;
+  final String text;
+  final Color primaryColor;
+  final Color secondaryColor;
+  final VoidCallback onPress;
+
+  const CardButtom({
+    Key? key,
+    required this.text,
+    this.icon = Icons.add_alert,
+    required this.onPress,
+    this.primaryColor = Colors.blue,
+    this.secondaryColor = Colors.blueAccent,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const _BackgroundCardButtom();
+    return FadeInLeft(
+      duration: const Duration(milliseconds: 300),
+      child: GestureDetector(
+        onTap: onPress,
+        child: Stack(children: [
+          _BackgroundCardButtom(
+            icon: icon,
+            primaryColor: primaryColor,
+            secondaryColor: secondaryColor,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 140, width: 30),
+              Icon(icon, color: Colors.white, size: 40),
+              const SizedBox(width: 5),
+              Expanded(
+                  child: Text(
+                text,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
+              )),
+              const Icon(
+                Icons.chevron_right_rounded,
+                color: Colors.white,
+              ),
+              const SizedBox(width: 30),
+            ],
+          )
+        ]),
+      ),
+    );
   }
 }
 
 class _BackgroundCardButtom extends StatelessWidget {
+  final IconData icon;
+  final Color primaryColor;
+  final Color secondaryColor;
+
   const _BackgroundCardButtom({
     Key? key,
+    this.icon = Icons.add_alert,
+    this.primaryColor = const Color.fromRGBO(105, 137, 245, 1),
+    this.secondaryColor = const Color.fromRGBO(144, 110, 245, 1),
   }) : super(key: key);
 
   @override
@@ -29,19 +80,22 @@ class _BackgroundCardButtom extends StatelessWidget {
               blurRadius: 10,
             ),
           ],
-          gradient: const LinearGradient(
+          gradient: LinearGradient(
             colors: [
-              Color(0xff6989f5),
-              Color(0xff906EF5),
+              primaryColor,
+              secondaryColor,
             ],
           )),
-      child: Stack(children: const [
-        Positioned(
-          left: 20,
-          top: 20,
-          child: Icon(Icons.medical_services, color: Colors.white, size: 30),
-        ),
-      ]),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(15),
+        child: Stack(children: [
+          Positioned(
+            right: -20,
+            top: -5,
+            child: Icon(icon, color: Colors.white.withOpacity(0.2), size: 150),
+          ),
+        ]),
+      ),
     );
   }
 }
